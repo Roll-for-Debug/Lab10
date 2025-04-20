@@ -20,7 +20,7 @@ public class ListTester {
 	};
 
 	// TODO: THIS IS WHERE YOU CHOOSE WHICH LIST TO TEST
-	private final static ListToUse LIST_TO_USE = ListToUse.arrayList;
+	private final static ListToUse LIST_TO_USE = ListToUse.singleLinkedList;
 
 	// possible results expected in tests
 	private enum Result {
@@ -315,9 +315,9 @@ public class ListTester {
 			case arrayList:
 				listToUse = new IUArrayList<Integer>();
 				break;
-			// case singleLinkedList:
-			// listToUse = new IUSingleLinkedList<Integer>();
-			// break;
+			case singleLinkedList:
+			listToUse = new IUSingleLinkedList<Integer>();
+			break;
 			// case doubleLinkedList:
 			// listToUse = new IUDoubleLinkedList<Integer>();
 			// break;
@@ -337,7 +337,7 @@ public class ListTester {
 
 	/**
 	 * Scenario #02: [] -> addToFront(A) -> [A]
-	 * 
+	 *
 	 * @return [A] after addToFront(A)
 	 */
 	private IndexedUnsortedList<Integer> emptyList_addToFrontA_A() {
@@ -350,7 +350,7 @@ public class ListTester {
 
 	/**
 	 * Scenario #03: [] -> addToRear(A) -> [A]
-	 * 
+	 *
 	 * @return [A] after addToRear(A)
 	 */
 
@@ -364,7 +364,7 @@ public class ListTester {
 
 	/**
 	 * Scenario #04: [] -> add(A) -> [A] Tyler
-	 * 
+	 *
 	 * @return [A] after add(A)
 	 */
 	private IndexedUnsortedList<Integer> emptyList_addA_A() {
@@ -377,7 +377,7 @@ public class ListTester {
 
 	/**
 	 * Scenario #05: [] -> add(0, A) -> [A]
-	 * 
+	 *
 	 * @return [A] after add(0, A)
 	 */
 	private IndexedUnsortedList<Integer> emptyList_add0A_A() {
@@ -390,7 +390,7 @@ public class ListTester {
 
 	/**
 	 * Scenario #06: [A] -> addToFront(B) -> [B,A]
-	 * 
+	 *
 	 * @return [B,A] after addToFront(B)
 	 */
 	private IndexedUnsortedList<Integer> A_addToFrontB_BA() {
@@ -403,7 +403,7 @@ public class ListTester {
 
 	/**
 	 * Scenario #07: [A] -> addToRear(B) -> [A,B]
-	 * 
+	 *
 	 * @return [A,B] after addToRear(B)
 	 */
 
@@ -417,7 +417,7 @@ public class ListTester {
 
 	/**
 	 * Scenario #10: [A] -> add(0,B) -> [B,A]
-	 * 
+	 *
 	 * @return [B,A] after add(0,B)
 	 */
 
@@ -431,13 +431,13 @@ public class ListTester {
 
 	/**
 	 * Scenario #12: [A] -> removeFirst() -> []
-	 * 
+	 *
 	 * @return [] after removeFirst()
 	 */
 
 	/**
 	 * Scenario #13: [A] -> removeLast() -> []
-	 * 
+	 *
 	 * @return [] after removeLast()
 	 */
 	private IndexedUnsortedList<Integer> A_removeLast_emptyList() {
@@ -450,13 +450,13 @@ public class ListTester {
 
 	/**
 	 * Scenario #14: [A] -> remove(A) -> []
-	 * 
+	 *
 	 * @return [] after remove(A)
 	 */
 
 	/**
 	 * Scenario #15: [A] -> remove(0) -> []
-	 * 
+	 *
 	 * @return [] after remove(0)
 	 */
 	private IndexedUnsortedList<Integer> A_remove0_empty() {
@@ -469,13 +469,13 @@ public class ListTester {
 
 	/**
 	 * Scenario #16: [A] -> set(0,B) -> [B]
-	 * 
+	 *
 	 * @return [B] after set(0,B)
 	 */
 
 	/**
 	 * Scenario #17: [A,B] -> addToFront(C) -> [C,A,B]
-	 * 
+	 *
 	 * @return [C,A,B] after addToFront(C)
 	 */
 	private IndexedUnsortedList<Integer> AB_addToFrontC_CAB() {
@@ -488,7 +488,7 @@ public class ListTester {
 
 	/**
 	 * Scenario #20: [A,B] -> addAfter(C,B) -> [A,B,C]
-	 * 
+	 *
 	 * @return [A,B,C] after addAfter(C,B)
 	 */
 	private IndexedUnsortedList<Integer> AB_addAfterCB_ABC() {
@@ -501,13 +501,13 @@ public class ListTester {
 
 	/**
 	 * Scenario #23: [A,B] -> add(1,C) -> [A,C,B]
-	 * 
+	 *
 	 * @return [A,C,B] after add(1,C)
 	 */
 
 	/**
 	 * Scenario #25: [A,B] -> removeFirst() -> [B]
-	 * 
+	 *
 	 * @return [B] after removeFirst()
 	 */
 	private IndexedUnsortedList<Integer> AB_removeFirst_B() {
@@ -520,7 +520,7 @@ public class ListTester {
 
 	/**
 	 * Scenario #26: [A,B] -> removeLast() -> [A]
-	 * 
+	 *
 	 * @return [A] after removeLast()
 	 */
 	private IndexedUnsortedList<Integer> AB_removeLast_A() {
@@ -533,13 +533,13 @@ public class ListTester {
 
 	/**
 	 * Scenario #27: [A,B] -> remove(A) -> [B]
-	 * 
+	 *
 	 * @return [B] after remove(A)
 	 */
 
 	/**
 	 * Scenario #28: [A,B] -> remove(B) -> [A]
-	 * 
+	 *
 	 * @return [A] after remove(B)
 	 */
 
@@ -553,100 +553,100 @@ public class ListTester {
 
 	/**
 	 * Scenario #29: [A,B] -> remove(0) -> [B]
-	 * 
+	 *
 	 * @return [B] after remove(0)
 	 */
 
 	/**
 	 * Scenario #30: [A,B] -> remove(1) -> [A]
-	 * 
+	 *
 	 * @return [A] after remove(1)
 	 */
 
 	/**
 	 * Scenario #33: [A,B,C] -> removeFirst() -> [B,C]
-	 * 
+	 *
 	 * @return [B,C] after removeFirst()
 	 */
 
 	/**
 	 * Scenario #37: [A,B,C] -> remove(C) -> [A,B]
-	 * 
+	 *
 	 * @return [A,B] after remove(C)
 	 */
 
 	/**
 	 * Scenario #39: [A,B,C] -> remove(1) -> [A,C]
-	 * 
+	 *
 	 * @return [A,C] after remove(1)
 	 */
 
 	/**
 	 * Scenario #44: [A] -> iterator, next(), remove() -> []
-	 * 
+	 *
 	 * @return [] after iterator, next(), remove()
 	 */
 
 	/**
 	 * Scenario #45: [A,B] -> iterator, next(), remove() -> [B]
-	 * 
+	 *
 	 * @return [B] after iterator, next(), remove()
 	 */
 
 	/**
 	 * Scenario #46: [A,B] -> iterator, next(), next(), remove() -> [A]
-	 * 
+	 *
 	 * @return [A] after iterator, next(), next(), remove()
 	 */
 
 	/**
 	 * Scenario #47: [A,B] -> iterator, next(), remove(), next(), remove() -> []
-	 * 
+	 *
 	 * @return [] after iterator, next(), remove(), next(), remove()
 	 */
 
 	/**
 	 * Scenario #48: [A,B,C] -> iterator, next(), remove() -> [B,C]
-	 * 
+	 *
 	 * @return [B,C] after iterator, next(), remove()
 	 */
 
 	/**
 	 * Scenario #49: [A,B,C] -> iterator, next(), next(), remove() -> [A,C]
-	 * 
+	 *
 	 * @return [A,C] after iterator, next(), next(), remove()
 	 */
 
 	/**
 	 * Scenario #50: [A,B,C] -> iterator, next(), next(), next(), remove() -> [A,B]
-	 * 
+	 *
 	 * @return [A,B] after iterator, next(), next(), next(), remove()
 	 */
 
 	/**
 	 * Scenario #51: [A,B,C] -> iterator, next(), remove(), next(), remove() -> [C]
-	 * 
+	 *
 	 * @return [C] after iterator, next(), remove(), next(), remove()
 	 */
 
 	/**
 	 * Scenario #52: [A,B,C] -> iterator, next(), remove(), next(), next(), remove()
 	 * -> [B]
-	 * 
+	 *
 	 * @return [B] after iterator, next(), remove(), next(), next(), remove()
 	 */
 
 	/**
 	 * Scenario #53: [A,B,C] -> iterator, next(), next(), remove(), next(), remove()
 	 * -> [A]
-	 * 
+	 *
 	 * @return [A] after iterator, next(), next(), remove(), next(), remove()
 	 */
 
 	/**
 	 * Scenario #54: [A,B,C] -> iterator, next(), remove(), next(), remove(),
 	 * next(), remove() -> []
-	 * 
+	 *
 	 * @return [] after iterator, next(), remove(), next(), remove(), next(),
 	 *         remove()
 	 */
