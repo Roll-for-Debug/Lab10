@@ -5,7 +5,7 @@ import java.util.*;
  * An Iterator with working remove() method is implemented, but
  * ListIterator is unsupported.
  * 
- * @author 
+ * @author
  * 
  * @param <E> type to store
  */
@@ -13,7 +13,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	private LinearNode<E> front, rear;
 	private int count;
 	private int modCount;
-	
+
 	/** Creates an empty list */
 	public IUSingleLinkedList() {
 		front = rear = null;
@@ -23,43 +23,43 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 	@Override
 	public void addToFront(E element) {
-		// TODO 
-		
+		// TODO
+
 	}
 
 	@Override
 	public void addToRear(E element) {
-		// TODO 
-		
+		// TODO
+
 	}
 
 	@Override
 	public void add(E element) {
-		// TODO 
-		
+		// TODO
+
 	}
 
 	@Override
 	public void addAfter(E element, E target) {
-		// TODO 
-		
+		// TODO
+
 	}
 
 	@Override
 	public void add(int index, E element) {
-		// TODO 
-		
+		// TODO
+
 	}
 
 	@Override
 	public E removeFirst() {
-		// TODO 
+		// TODO
 		return null;
 	}
 
 	@Override
 	public E removeLast() {
-		// TODO 
+		// TODO
 		return null;
 	}
 
@@ -77,61 +77,61 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 		if (current == null) {
 			throw new NoSuchElementException();
 		}
-		return removeElement(previous, current);		
+		return removeElement(previous, current);
 	}
 
 	@Override
 	public E remove(int index) {
-		// TODO 
+		// TODO
 		return null;
 	}
 
 	@Override
 	public void set(int index, E element) {
-		// TODO 
-		
+		// TODO
+
 	}
 
 	@Override
 	public E get(int index) {
-		// TODO 
+		// TODO
 		return null;
 	}
 
 	@Override
 	public int indexOf(E element) {
-		// TODO 
+		// TODO
 		return 0;
 	}
 
 	@Override
 	public E first() {
-		// TODO 
+		// TODO
 		return null;
 	}
 
 	@Override
 	public E last() {
-		// TODO 
+		// TODO
 		return null;
 	}
 
 	@Override
 	public boolean contains(E target) {
-		// TODO 
+		// TODO
 		return false;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO 
+		// TODO
 		return false;
 	}
 
 	@Override
 	public int size() {
-		// TODO 
-		return 0;
+		// TODO
+		return indexOf(rear);
 	}
 
 	@Override
@@ -170,7 +170,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 		private LinearNode<E> current;
 		private LinearNode<E> next;
 		private int iterModCount;
-		
+
 		/** Creates a new iterator for the list */
 		public SLLIterator() {
 			previous = null;
@@ -181,16 +181,16 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 		@Override
 		public boolean hasNext() {
-			// TODO 
+			// TODO
 			return false;
 		}
 
 		@Override
 		public E next() {
-			// TODO 
+			// TODO
 			return null;
 		}
-		
+
 		@Override
 		public void remove() {
 			// TODO
