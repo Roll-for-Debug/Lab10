@@ -2,6 +2,8 @@
 
 ## TODOS
 
+### Init scenarios in ListTester.java
+
 - 16 Colin
 - 23 Zion
 - 27 Tyler
