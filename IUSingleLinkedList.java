@@ -50,7 +50,6 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public void add(E element) {
 		addToRear(element);
-
 	}
 
 	@Override
