@@ -23,7 +23,6 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 	@Override
 	public void addToFront(E element) {
-		// TODO
 		LinearNode<E> node = new LinearNode<E>(element);
 		if (isEmpty()) {
 			front = rear= node;
@@ -54,7 +53,6 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 	@Override
 	public void addAfter(E element, E target) {
-		// TODO
 		if (indexOf(target) == -1) { throw new NoSuchElementException(); }
 		LinearNode<E> current = front;
 		while (current != null && !current.getElement().equals(target)) {
@@ -71,7 +69,6 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 	@Override
 	public void add(int index, E element) {
-		// TODO
 		checkRange(index);
 		if (isEmpty()) {
 			front = rear = new LinearNode<E>(element);
@@ -133,7 +130,6 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 	@Override
 	public void set(int index, E element) {
-		// TODO
 		if (isEmpty()) { throw new IndexOutOfBoundsException(); }
 		checkRange(index);
 		LinearNode<E> current = front;
@@ -194,19 +190,16 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 	@Override
 	public boolean isEmpty() {
-		// TODO
 		return size() == 0;
 	}
 
 	@Override
 	public int size() {
-		// TODO
 		return count;
 	}
 
 	@Override
 	public String toString() {
-		// TODO
 		String result = "[";
 		LinearNode<E> current = front;
 		while (current != null) {
@@ -260,7 +253,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 		@Override
 		public boolean hasNext() {
-			return current != null;
+			return current.getNext() != null;
 		}
 
 		@Override
@@ -276,7 +269,6 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 		@Override
 		public void remove() {
-			// TODO
 			previous.setNext(next); // Current should be GC'd? Might have to set current to something.
 		}
 	}
