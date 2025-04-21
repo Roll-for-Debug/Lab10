@@ -23,50 +23,32 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 	@Override
 	public void addToFront(E element) {
-		LinearNode<E> node = new LinearNode<E>(element);
-		node.setNext(front.getNext());
-		front = node; // One for the garbage man
 	}
 
 	@Override
 	public void addToRear(E element) {
-		LinearNode<E> node = new LinearNode<E>(element);
-		if (isEmpty()) {
-			front = node;
-		} else {
-			rear.setNext(node);
-		}
-		rear = node;
-		count++;
 	}
 
 	@Override
 	public void add(E element) {
-		addToRear(element);
 
 	}
 
 	@Override
 	public void addAfter(E element, E target) {
-		// TODO
-
 	}
 
 	@Override
 	public void add(int index, E element) {
 		// TODO
-		LinearNode<E> node = new LinearNode<E>(element);
-
 	}
 
 	@Override
 	public E removeFirst() {
-		return remove(front.getElement());
 	}
 
 	@Override
 	public E removeLast() {
-		return remove(rear.getElement());
 	}
 
 	@Override
@@ -88,79 +70,46 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 	@Override
 	public E remove(int index) {
-		return remove(get(index));
 	}
 
 	@Override
 	public void set(int index, E element) {
 		// TODO
-		checkEmpty();
-		LinearNode<E> current = front;
-		for (int i = 0; i <= index; i++) {
-			current = current.getNext();
-		}
-		current.setElement(element);
-
 	}
 
 	@Override
 	public E get(int index) {
-		checkEmpty();
-		LinearNode<E> current = front;
-		for (int i = 0; i <= index; i++) {
-			current = current.getNext();
-		}
-		return current.getElement();
 	}
 
 	@Override
 	public int indexOf(E element) {
-		LinearNode<E> current = front, previous = null;
-		int index = 0;
-		while (current != null && !current.getElement().equals(element)) {
-			previous = current;
-			current = current.getNext();
-			index++;
-		}
-		if (current == null) {
-			return -1;
-		}
-		return index;
 	}
 
 	@Override
 	public E first() {
-		checkEmpty();
-		return front.getElement();
 	}
 
 	@Override
 	public E last() {
-		checkEmpty();
-		return rear.getElement();
 	}
 
 	@Override
 	public boolean contains(E target) {
-		return indexOf(target) != -1;
 	}
 
 	@Override
 	public boolean isEmpty() {
 		// TODO
-		return size() == 0;
 	}
 
 	@Override
 	public int size() {
 		// TODO
-		return count;
 	}
 
 	@Override
 	public String toString() {
 		// TODO
-		return "";
 	}
 
 	private E removeElement(LinearNode<E> previous, LinearNode<E> current) {
@@ -204,31 +153,14 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 		@Override
 		public boolean hasNext() {
-			return current != null;
 		}
 
 		@Override
 		public E next() {
-			if (hasNext()) {
-				throw new NoSuchElementException();
-			}
-			previous = current;
-			current = current.getNext();
-			next = current.getNext();
-			return previous.getElement();
 		}
 
 		@Override
 		public void remove() {
-			// TODO
-			previous.setNext(next); // Current should be GC'd? Might have to set current to something.
-		}
-	}
-
-	private void checkEmpty() {
-		if (!isEmpty()) {
-			throw new NoSuchElementException(); // Might need to double check the exception to throw and if we are expecting a
-																					// different one
 		}
 	}
 
