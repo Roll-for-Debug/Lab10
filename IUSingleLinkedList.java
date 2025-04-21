@@ -4,9 +4,9 @@ import java.util.*;
  * Single-linked node implementation of IndexedUnsortedList.
  * An Iterator with working remove() method is implemented, but
  * ListIterator is unsupported.
- * 
+ *
  * @author
- * 
+ *
  * @param <E> type to store
  */
 public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
@@ -23,7 +23,6 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 	@Override
 	public void addToFront(E element) {
-		// TODO
 		LinearNode<E> node = new LinearNode<E>(element);
 		node.setNext(front.getNext());
 		front = node; // One for the garbage man
