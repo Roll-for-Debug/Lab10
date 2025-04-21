@@ -23,19 +23,23 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 	@Override
 	public void addToFront(E element) {
+		// TODO
 	}
 
 	@Override
 	public void addToRear(E element) {
+		// TODO
 	}
 
 	@Override
 	public void add(E element) {
+		// TODO
 
 	}
 
 	@Override
 	public void addAfter(E element, E target) {
+		// TODO
 	}
 
 	@Override
