@@ -23,38 +23,38 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 	@Override
 	public void addToFront(E element) {
-		// TODO
+		// TODO Colin
 	}
 
 	@Override
 	public void addToRear(E element) {
-		// TODO
+		// TODO Zion
 	}
 
 	@Override
 	public void add(E element) {
-		// TODO
+		// TODO Tyler
 
 	}
 
 	@Override
 	public void addAfter(E element, E target) {
-		// TODO
+		// TODO Kelsi
 	}
 
 	@Override
 	public void add(int index, E element) {
-		// TODO
+		// TODO Tyra
 	}
 
 	@Override
 	public E removeFirst() {
-		// TODO
+		// TODO Colin
 	}
 
 	@Override
 	public E removeLast() {
-		// TODO
+		// TODO Zion
 	}
 
 	@Override
@@ -76,56 +76,55 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 	@Override
 	public E remove(int index) {
-		// TODO
+		// TODO Kelsi
 	}
 
 	@Override
 	public void set(int index, E element) {
-		// TODO
+		// TODO Tyra
 	}
 
 	@Override
 	public E get(int index) {
-		// TODO
+		// TODO Colin
 	}
 
 	@Override
 	public int indexOf(E element) {
-		// TODO
+		// TODO Zion
 	}
 
 	@Override
 	public E first() {
-		// TODO
+		// TODO Tyler
 	}
 
 	@Override
 	public E last() {
-		// TODO
+		// TODO Kelsi
 	}
 
 	@Override
 	public boolean contains(E target) {
-		// TODO
+		// TODO Tyra
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO
-		// TODO
+		// TODO Colin
 	}
 
 	@Override
 	public int size() {
-		// TODO
+		// TODO Zion
 	}
 
 	@Override
 	public String toString() {
-		// TODO
+		// TODO Tyler
 	}
 
-	private E removeElement(LinearNode<E> previous, LinearNode<E> current) {
+	private E removeElement(LinearNode<E> previous, LinearNode<E> current) { // given, don't much
 		// Grab element
 		E result = current.getElement();
 		// If not the first element in the list
@@ -166,17 +165,17 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 		@Override
 		public boolean hasNext() {
-			// TODO
+			// TODO Kelsi
 		}
 
 		@Override
 		public E next() {
-			// TODO
+			// TODO Kyra
 		}
 
 		@Override
 		public void remove() {
-			// TODO
+			// TODO Colin
 		}
 	}
 
