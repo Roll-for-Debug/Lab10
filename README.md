@@ -7,5 +7,5 @@
 - 27 Tyler
 - 29 Kelsi
 - 33 Tyra
-- 37 _\*\*BONUS_\*\*
-- 39 _**BONUS**_
+- 37 **BONUS**
+- 39 _BONUS_
