@@ -45,10 +45,12 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 	@Override
 	public E removeFirst() {
+		// TODO
 	}
 
 	@Override
 	public E removeLast() {
+		// TODO
 	}
 
 	@Override
@@ -70,6 +72,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 	@Override
 	public E remove(int index) {
+		// TODO
 	}
 
 	@Override
@@ -79,26 +82,32 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 	@Override
 	public E get(int index) {
+		// TODO
 	}
 
 	@Override
 	public int indexOf(E element) {
+		// TODO
 	}
 
 	@Override
 	public E first() {
+		// TODO
 	}
 
 	@Override
 	public E last() {
+		// TODO
 	}
 
 	@Override
 	public boolean contains(E target) {
+		// TODO
 	}
 
 	@Override
 	public boolean isEmpty() {
+		// TODO
 		// TODO
 	}
 
@@ -153,14 +162,17 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 		@Override
 		public boolean hasNext() {
+			// TODO
 		}
 
 		@Override
 		public E next() {
+			// TODO
 		}
 
 		@Override
 		public void remove() {
+			// TODO
 		}
 	}
 
