@@ -217,6 +217,7 @@ public class ListTester {
 
 		// 1-element to changed 1-element via set()
 		// Scenario: 16
+		testSingleElementList(A_set0B_B, "16: A_set0B-B", LIST_B, STRING_B);
 
 		// 2-element to empty list
 		// Scenario: 47
