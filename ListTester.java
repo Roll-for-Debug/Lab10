@@ -263,6 +263,7 @@ public class ListTester {
 		// Scenario: 53
 
 		// 3-element to 2-element
+		// TODO Tyra
 		// Scenario: 33
 
 		// Scenario: 37
@@ -565,6 +566,7 @@ public class ListTester {
 	 */
 
 	/**
+	 * // TODO Tyra
 	 * Scenario #33: [A,B,C] -> removeFirst() -> [B,C]
 	 *
 	 * @return [B,C] after removeFirst()
