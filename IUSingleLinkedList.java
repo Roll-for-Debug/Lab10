@@ -34,7 +34,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public void add(E element) {
 		// TODO Tyler
-
+		addToRear(element);
 	}
 
 	@Override
@@ -97,6 +97,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public E first() {
 		// TODO Tyler
+		return front.getElement();
 	}
 
 	@Override
@@ -122,6 +123,16 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public String toString() {
 		// TODO Tyler
+		String result = "[";
+		LinearNode<E> current = front;
+		while (current != null) {
+			result += current.getElement();
+			current = current.getNext();
+			if (current != null) {
+				result += ", ";
+			}
+		}
+		return result += "]";
 	}
 
 	private E removeElement(LinearNode<E> previous, LinearNode<E> current) { // given, don't much

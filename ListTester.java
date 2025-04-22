@@ -229,8 +229,8 @@ public class ListTester {
 		// Scenario: 26
 		testSingleElementList(AB_removeLast_A, "26: AB_removeLast_A", LIST_A, STRING_A);
 
-		// Scenario: 27
-
+		// Scenario: 27 Review Tyler
+		testSingleElementList(AB_removeA_B, "27: AB_removeA_B", LIST_B, STRING_B);
 		// Scenario: 28 TODO Kelsi
 		testSingleElementList(AB_removeB_A, "28: AB_removeB_A", LIST_A, STRING_A); // ADD THIS LINE
 
@@ -267,8 +267,8 @@ public class ListTester {
 
 		// Scenario: 37
 
-		// Scenario: 39
-
+		// Scenario: 39 TODO Tyler
+		testTwoElementList(ABC_remove1_AC, "39: ABC_remove1_AC", LIST_AC, STRING_AC);
 		// Scenario: 48
 
 		// Scenario: 49
@@ -532,12 +532,16 @@ public class ListTester {
 
 	private Scenario<Integer> AB_removeLast_A = () -> AB_removeLast_A();
 
-	/**
+	/** Review Tyler
 	 * Scenario #27: [A,B] -> remove(A) -> [B]
 	 *
 	 * @return [B] after remove(A)
 	 */
-
+	private IndexedUnsortedList<Integer> AB_removeA_B() {
+		IndexedUnsortedList<Integer> list = A_addToRearB_AB();
+		list.remove(ELEMENT_A);
+		return list;
+	}
 	/**
 	 * Scenario #28: [A,B] -> remove(B) -> [A]
 	 *
@@ -581,7 +585,9 @@ public class ListTester {
 	 *
 	 * @return [A,C] after remove(1)
 	 */
-
+	private IndexedUnsortedList<Integer> ABC_remove1_AC() {
+		IndexedUnsortedList<Integer> list = AB_addToRearC_ABC();
+	}
 	/**
 	 * Scenario #44: [A] -> iterator, next(), remove() -> []
 	 *
