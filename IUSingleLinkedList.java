@@ -95,7 +95,8 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public E removeFirst() {
 		if (front == null) { throw new NoSuchElementException(); }
-		return remove(front.getElement());
+		front = front.getNext();
+		return front.getElement();
 	}
 
 	@Override
