@@ -255,8 +255,20 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 		@Override
 		public E next() {
 			// TODO Tyra
+			if (iterModCount != modCount) {
+				throw new ConcurrentModificationException();
+			}
 
+			if (next == null) {
+				throw new NoSuchElementException();
+			}
+
+			previous = current;
+			current = next;
+			next = next.getNext();
 			didNext = true; // Allow remove
+
+			return current.getElement();
 		}
 
 		@Override
