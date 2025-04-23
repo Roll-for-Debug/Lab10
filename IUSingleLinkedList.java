@@ -24,6 +24,15 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public void addToFront(E element) {
 		// TODO Colin
+		LinearNode<E> node = new LinearNode<E>(element);
+		if (isEmpty()) {
+			front = rear= node;
+			count++;
+			return;
+		}
+		node.setNext(front);
+		front = node; // One for the garbage man
+		count++;
 	}
 
 	@Override
@@ -50,6 +59,9 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public E removeFirst() {
 		// TODO Colin
+		if (front == null) { throw new NoSuchElementException(); }
+		front = front.getNext();
+		return front.getElement();
 	}
 
 	@Override

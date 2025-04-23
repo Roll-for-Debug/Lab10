@@ -198,6 +198,7 @@ public class ListTester {
 
 		// 1-element to empty list
 		// Scenario: 12
+		testEmptyList(A_removeFirst_emptyList, "12: A_removeFirst_emptyList");
 
 		// Scenario: 13 TODO Zion
 		testEmptyList(A_removeLast_emptyList, "13: A_removeLast_emptyList");
@@ -217,7 +218,7 @@ public class ListTester {
 
 		// 1-element to changed 1-element via set()
 		// Scenario: 16
-		testSingleElementList(A_set0B_B, "16: A_set0B-B", LIST_B, STRING_B);
+		testSingleElementList(A_set0B_B, "16: A_set0B_B", LIST_B, STRING_B);
 
 		// 2-element to empty list
 		// Scenario: 47
@@ -266,6 +267,7 @@ public class ListTester {
 		// Scenario: 33
 
 		// Scenario: 37
+		testTwoElementList(ABC_removeC_AB, "37: ABC_removeC_AB", LIST_AB, STRING_AB);
 
 		// Scenario: 39
 
@@ -435,6 +437,13 @@ public class ListTester {
 	 *
 	 * @return [] after removeFirst()
 	 */
+	private IndexedUnsortedList<Integer> A_removeFirst_emptyList() {
+		IndexedUnsortedList<Integer> list = emptyList_addToFrontA_A();
+		list.removeFirst();
+		return list;
+	}
+
+	private Scenario<Integer> A_removeFirst_emptyList = () -> A_removeFirst_emptyList();
 
 	/**
 	 * Scenario #13: [A] -> removeLast() -> []
@@ -473,6 +482,13 @@ public class ListTester {
 	 *
 	 * @return [B] after set(0,B)
 	 */
+	private IndexedUnsortedList<Integer> A_set0B_B() {
+		IndexedUnsortedList<Integer> list = emptyList_addToFrontA_A();
+		list.set(0, ELEMENT_B);
+		return list;
+	}
+
+	private Scenario<Integer> A_set0B_B = () -> A_set0B_B();
 
 	/**
 	 * Scenario #17: [A,B] -> addToFront(C) -> [C,A,B]
@@ -575,6 +591,13 @@ public class ListTester {
 	 *
 	 * @return [A,B] after remove(C)
 	 */
+	private IndexedUnsortedList<Integer> ABC_removeC_AB() {
+		IndexedUnsortedList<Integer> list = AB_addAfterCB_ABC();
+		list.remove(ELEMENT_C);
+		return list;
+	}
+
+	private Scenario<Integer> ABC_removeC_AB = () -> ABC_removeC_AB();
 
 	/**
 	 * Scenario #39: [A,B,C] -> remove(1) -> [A,C]
