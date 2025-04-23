@@ -119,9 +119,17 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public void set(int index, E element) {
 		// TODO Tyra
-		indexOf(index).setElement(element);
-		return;
-	}
+		if (isEmpty()) { throw new IndexOutOfBoundsException(); }
+        if (index < 0 || index > count) { throw new IndexOutOfBoundsException(); }
+        LinearNode<E> current = front;
+        int i = 0;
+        while (current != null && i < index){
+            current = current.getNext();
+            i++;
+        }
+        if (current == null) { throw new IndexOutOfBoundsException(); }
+        current.setElement(element);
+    }
 
 	@Override
 	public E get(int index) { // Colin
