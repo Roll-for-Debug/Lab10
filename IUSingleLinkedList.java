@@ -22,19 +22,32 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	}
 
 	@Override
-	public void addToFront(E element) {
-		// TODO Colin
+	public void addToFront(E element) { // Colin
+		LinearNode<E> node = new LinearNode<E>(element);
+		if (isEmpty()) {
+			front = rear= node;
+			count++;
+			return;
+		}
+		node.setNext(front);
+		front = node; // One for the garbage man
+		count++;
+		modCount++;
 	}
 
 	@Override
-	public void addToRear(E element) {
-		// TODO Zion
+	public void addToRear(E element) { // Zion
+		LinearNode<E> newNode = new LinearNode<E>(element);
+		rear.setNext(newNode);
+		rear = rear.getNext();
+		newNode = null;
+		count++;
 	}
 
 	@Override
 	public void add(E element) {
-		// TODO Tyler
-
+		// Review Tyler
+		addToRear(element);
 	}
 
 	@Override
@@ -48,13 +61,16 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	}
 
 	@Override
-	public E removeFirst() {
-		// TODO Colin
+	public E removeFirst() { // Colin
+		if (front == null) { throw new NoSuchElementException(); }
+		front = front.getNext();
+		modCount++;
+		return front.getElement();
 	}
 
 	@Override
-	public E removeLast() {
-		// TODO Zion
+	public E removeLast() { // Zion
+		return remove(rear.getElement());
 	}
 
 	@Override
@@ -85,18 +101,42 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	}
 
 	@Override
-	public E get(int index) {
-		// TODO Colin
+	public E get(int index) { // Colin
+		if (isEmpty()) { throw new IndexOutOfBoundsException(); }
+		if (index < 0 || index > count) { throw new IndexOutOfBoundsException(); }
+		LinearNode<E> current = front;
+		int i = 0;
+		while (current != null && i < index){
+			current = current.getNext();
+			i++;
+		}
+		if (current == null) { throw new IndexOutOfBoundsException(); } // Not sure if this is necessary - Colin
+		modCount++;
+		return current.getElement();
 	}
 
 	@Override
-	public int indexOf(E element) {
-		// TODO Zion
+	public int indexOf(E element) { // Zion
+		if ( isEmpty() ) { throw new RuntimeException(); } // Need to replace with correct exception, unless it should return -1 "I think it's just -1" - Colin
+
+		LinearNode<E> temp = this.front;
+		int indexCounter = 0;
+
+		do {
+			if (temp.equals(element)) {
+				return indexCounter;
+			}
+			temp = temp.getNext();
+			indexCounter++;
+		} while (!(temp == null));
+
+		return -1;
 	}
 
 	@Override
 	public E first() {
-		// TODO Tyler
+		// Review Tyler
+		return front.getElement();
 	}
 
 	@Override
@@ -110,18 +150,28 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	}
 
 	@Override
-	public boolean isEmpty() {
-		// TODO Colin
+	public boolean isEmpty() { // Colin
+		return count == 0;
 	}
 
 	@Override
-	public int size() {
-		// TODO Zion
+	public int size() { // Zion
+		return count;
 	}
 
 	@Override
 	public String toString() {
-		// TODO Tyler
+		// Review Tyler
+		String result = "[";
+		LinearNode<E> current = front;
+		while (current != null) {
+			result += current.getElement();
+			current = current.getNext();
+			if (current != null) {
+				result += ", ";
+			}
+		}
+		return result += "]";
 	}
 
 	private E removeElement(LinearNode<E> previous, LinearNode<E> current) { // given, don't much
@@ -154,6 +204,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 		private LinearNode<E> current;
 		private LinearNode<E> next;
 		private int iterModCount;
+		private boolean didNext;
 
 		/** Creates a new iterator for the list */
 		public SLLIterator() {
@@ -161,6 +212,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 			current = null;
 			next = front;
 			iterModCount = modCount;
+			didNext = false;
 		}
 
 		@Override
@@ -170,12 +222,18 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 		@Override
 		public E next() {
-			// TODO Kyra
+			// TODO Tyra
+
+			didNext = true; // Allow remove
 		}
 
 		@Override
-		public void remove() {
-			// TODO Colin
+		public void remove() { // Colin
+			if (!didNext) { throw new ConcurrentModificationException(); }
+			previous.setNext(next);
+			current = previous; // GC old current
+			didNext = false; // disallow remove until next, next()
+			iterModCount++;
 		}
 	}
 
