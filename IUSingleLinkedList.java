@@ -22,8 +22,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	}
 
 	@Override
-	public void addToFront(E element) {
-		// TODO Colin
+	public void addToFront(E element) { // Colin
 		LinearNode<E> node = new LinearNode<E>(element);
 		if (isEmpty()) {
 			front = rear= node;
@@ -33,6 +32,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 		node.setNext(front);
 		front = node; // One for the garbage man
 		count++;
+		modCount++;
 	}
 
 	@Override
@@ -61,10 +61,10 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	}
 
 	@Override
-	public E removeFirst() {
-		// TODO Colin
+	public E removeFirst() { // Colin
 		if (front == null) { throw new NoSuchElementException(); }
 		front = front.getNext();
+		modCount++;
 		return front.getElement();
 	}
 
@@ -101,13 +101,23 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	}
 
 	@Override
-	public E get(int index) {
-		// TODO Colin
+	public E get(int index) { // Colin
+		if (isEmpty()) { throw new IndexOutOfBoundsException(); }
+		if (index < 0 || index > count) { throw new IndexOutOfBoundsException(); }
+		LinearNode<E> current = front;
+		int i = 0;
+		while (current != null && i < index){
+			current = current.getNext();
+			i++;
+		}
+		if (current == null) { throw new IndexOutOfBoundsException(); } // Not sure if this is necessary - Colin
+		modCount++;
+		return current.getElement();
 	}
 
 	@Override
 	public int indexOf(E element) { // Zion
-		if ( isEmpty() ) { throw new RuntimeException(); } // Need to replace with correct exception, unless it should return -1
+		if ( isEmpty() ) { throw new RuntimeException(); } // Need to replace with correct exception, unless it should return -1 "I think it's just -1" - Colin
 
 		LinearNode<E> temp = this.front;
 		int indexCounter = 0;
@@ -140,8 +150,8 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	}
 
 	@Override
-	public boolean isEmpty() {
-		// TODO Colin
+	public boolean isEmpty() { // Colin
+		return count == 0;
 	}
 
 	@Override
@@ -218,12 +228,12 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 		}
 
 		@Override
-		public void remove() {
-			// TODO Colin
+		public void remove() { // Colin
 			if (!didNext) { throw new ConcurrentModificationException(); }
 			previous.setNext(next);
 			current = previous; // GC old current
 			didNext = false; // disallow remove until next, next()
+			iterModCount++;
 		}
 	}
 
