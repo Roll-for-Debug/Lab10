@@ -194,6 +194,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 		private LinearNode<E> current;
 		private LinearNode<E> next;
 		private int iterModCount;
+		private boolean canEdit;
 
 		/** Creates a new iterator for the list */
 		public SLLIterator() {
@@ -201,6 +202,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 			current = null;
 			next = front;
 			iterModCount = modCount;
+			canEdit = false;
 		}
 
 		@Override
@@ -210,12 +212,17 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 		@Override
 		public E next() {
-			// TODO Kyra
+			// TODO Tyra
+
+			canEdit = true;
 		}
 
 		@Override
 		public void remove() {
 			// TODO Colin
+			if (canEdit) {  }
+			previous.setNext(current.getNext());
+
 		}
 	}
 
