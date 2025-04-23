@@ -58,7 +58,28 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public void add(int index, E element) {
 		// TODO Tyra
-	}
+        if (index < 0 || index > count) { throw new IndexOutOfBoundsException(); }
+        if (isEmpty()) {
+            front = rear = new LinearNode<E>(element);
+            count++;
+            return;
+        }
+        LinearNode<E> current = front;
+        for (int i = 0; i < index; i++) {
+            current = current.getNext();
+        }
+        if (current == null) {
+            current = new LinearNode<E>(element);
+            return;
+        }
+        LinearNode<E> add = new LinearNode<E>(element);
+        add.setNext(current);
+        if (current == front) {
+            front = add;
+        }
+        count++;
+
+    }
 
 	@Override
 	public E removeFirst() { // Colin
@@ -98,6 +119,8 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public void set(int index, E element) {
 		// TODO Tyra
+		indexOf(index).setElement(element);
+		return;
 	}
 
 	@Override
@@ -147,6 +170,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public boolean contains(E target) {
 		// TODO Tyra
+		return indexOf(target) != -1;
 	}
 
 	@Override

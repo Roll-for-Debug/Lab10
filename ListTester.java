@@ -266,6 +266,7 @@ public class ListTester {
 		// 3-element to 2-element
 		// TODO Tyra
 		// Scenario: 33
+		testTwoElementList(ABC_removeFirst_BC, "ABC_removeFirst_BC", LIST_BC, STRING_BC);
 
 		// Scenario: 37
 		testTwoElementList(ABC_removeC_AB, "37: ABC_removeC_AB", LIST_AB, STRING_AB);
@@ -600,6 +601,14 @@ public class ListTester {
 	 *
 	 * @return [B,C] after removeFirst()
 	 */
+	private IndexedUnsortedList<Integer> ABC_removeFirst_BC() {
+		IndexedUnsortedList<Integer> list = A_addToRearB_AB();
+		list.addToRear(ELEMENT_C);
+		list.removeFirst();
+		return list;
+	}
+
+	private Scenario<Integer> ABC_removeFirst_BC = () -> ABC_removeFirst_BC();
 
 	/**
 	 * Scenario #37: [A,B,C] -> remove(C) -> [A,B]
