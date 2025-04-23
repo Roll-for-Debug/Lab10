@@ -36,14 +36,18 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	}
 
 	@Override
-	public void addToRear(E element) {
-		// TODO Zion
+	public void addToRear(E element) { // Zion
+		LinearNode<E> newNode = new LinearNode<E>(element);
+		rear.setNext(newNode);
+		rear = rear.getNext();
+		newNode = null;
+		count++;
 	}
 
 	@Override
 	public void add(E element) {
-		// TODO Tyler
-
+		// Review Tyler
+		addToRear(element);
 	}
 
 	@Override
@@ -65,8 +69,8 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	}
 
 	@Override
-	public E removeLast() {
-		// TODO Zion
+	public E removeLast() { // Zion
+		return remove(rear.getElement());
 	}
 
 	@Override
@@ -102,13 +106,27 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	}
 
 	@Override
-	public int indexOf(E element) {
-		// TODO Zion
+	public int indexOf(E element) { // Zion
+		if ( isEmpty() ) { throw new RuntimeException(); } // Need to replace with correct exception, unless it should return -1
+
+		LinearNode<E> temp = this.front;
+		int indexCounter = 0;
+
+		do {
+			if (temp.equals(element)) {
+				return indexCounter;
+			}
+			temp = temp.getNext();
+			indexCounter++;
+		} while (!(temp == null));
+
+		return -1;
 	}
 
 	@Override
 	public E first() {
-		// TODO Tyler
+		// Review Tyler
+		return front.getElement();
 	}
 
 	@Override
@@ -127,13 +145,23 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	}
 
 	@Override
-	public int size() {
-		// TODO Zion
+	public int size() { // Zion
+		return count;
 	}
 
 	@Override
 	public String toString() {
-		// TODO Tyler
+		// Review Tyler
+		String result = "[";
+		LinearNode<E> current = front;
+		while (current != null) {
+			result += current.getElement();
+			current = current.getNext();
+			if (current != null) {
+				result += ", ";
+			}
+		}
+		return result += "]";
 	}
 
 	private E removeElement(LinearNode<E> previous, LinearNode<E> current) { // given, don't much
