@@ -45,6 +45,26 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public void add(int index, E element) {
 		// TODO Tyra
+		if(index == count) {
+			addToRear(element);
+			return;
+		}
+		else if (index == 0) {
+			addToFront(element);
+			return;
+		}
+
+		LinearNode<E> targetNode = findNodeIndex(index);
+		LinearNode<E> newNode = new LinearNode(targetNode.getElement());
+		newNode.setNext(targetNode.getNext());
+		targetNode.setElement(element);
+		targetNode.setNext(newNode);
+		if (targetNode == rear) {
+			rear = newNode;
+		}
+
+		count++;
+		modCount++;
 	}
 
 	@Override
@@ -82,6 +102,8 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public void set(int index, E element) {
 		// TODO Tyra
+		findNodeIndex(index).setElement(element);
+		return;
 	}
 
 	@Override
@@ -107,6 +129,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public boolean contains(E target) {
 		// TODO Tyra
+		return indexOf(target) != -1;
 	}
 
 	@Override
