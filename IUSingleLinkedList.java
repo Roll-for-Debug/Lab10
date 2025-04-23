@@ -53,6 +53,26 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public void addAfter(E element, E target) {
 		// TODO Kelsi
+		LinearNode<E> current = front;
+		LinearNode<E> newNode = new LinearNode<E>(element);
+
+		while (current != null) {
+			if (current.getElement().equals(target)) {
+				newNode.setNext(current.getNext());
+				current.setNext(newNode);
+
+				if (current == rear) {
+					rear = newNode;
+				}
+				count++;
+				modCount++;
+				return;
+			}
+			// Next Node 
+			current = current.getNext();
+		}
+		throw new NoSuchElementException();
+
 	}
 
 	@Override
@@ -88,6 +108,11 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 		modCount++;
 		return front.getElement();
 	}
+
+	/* - Kelsi
+	 * Will the return front.getElement(); throw NullPointerException?
+	 * 
+	 */
 
 	@Override
 	public E removeLast() { // Zion
@@ -250,6 +275,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 		@Override
 		public boolean hasNext() {
 			// TODO Kelsi
+			return next != null;
 		}
 
 		@Override
