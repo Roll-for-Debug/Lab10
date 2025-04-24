@@ -207,19 +207,19 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 		if (isEmpty()) {
 			return -1;
 		}
-
 		LinearNode<E> temp = this.front;
 		int indexCounter = 0;
-
 		do {
 			if (temp.equals(element)) {
 				return indexCounter;
 			}
 			temp = temp.getNext();
 			indexCounter++;
-		} while (!(temp == null));
-
-		return -1;
+			if (temp == null) {
+				return -1;
+			}
+		} while (!(temp == null) || !temp.getElement().equals(element));
+		return indexCounter;
 	}
 
 	@Override
