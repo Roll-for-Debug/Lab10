@@ -68,7 +68,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 				modCount++;
 				return;
 			}
-			// Next Node 
+			// Next Node
 			current = current.getNext();
 		}
 		throw new NoSuchElementException();
@@ -104,14 +104,17 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public E removeFirst() { // Colin
 		if (front == null) { throw new NoSuchElementException(); }
+		E retVal = front.getElement();
 		front = front.getNext();
 		modCount++;
-		return front.getElement();
+		return retVal;
 	}
 
 	/* - Kelsi
 	 * Will the return front.getElement(); throw NullPointerException?
-	 * 
+	 * - Colin
+	 * Good catch, was returning the wrong element, only NPE on single element list
+	 * worked in my testing surprisingly.
 	 */
 
 	@Override
