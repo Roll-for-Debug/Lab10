@@ -25,7 +25,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	public void addToFront(E element) { // Colin
 		LinearNode<E> node = new LinearNode<E>(element);
 		if (isEmpty()) {
-			front = rear= node;
+			front = rear = node;
 			count++;
 			return;
 		}
@@ -78,39 +78,44 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public void add(int index, E element) {
 		// TODO Tyra
-        if (index < 0 || index > count) { throw new IndexOutOfBoundsException(); }
-        if (isEmpty()) {
-            front = rear = new LinearNode<E>(element);
-            count++;
-            return;
-        }
-        LinearNode<E> current = front;
-        for (int i = 0; i < index; i++) {
-            current = current.getNext();
-        }
-        if (current == null) {
-            current = new LinearNode<E>(element);
-            return;
-        }
-        LinearNode<E> add = new LinearNode<E>(element);
-        add.setNext(current);
-        if (current == front) {
-            front = add;
-        }
-        count++;
+		if (index < 0 || index > count) {
+			throw new IndexOutOfBoundsException();
+		}
+		if (isEmpty()) {
+			front = rear = new LinearNode<E>(element);
+			count++;
+			return;
+		}
+		LinearNode<E> current = front;
+		for (int i = 0; i < index; i++) {
+			current = current.getNext();
+		}
+		if (current == null) {
+			current = new LinearNode<E>(element);
+			return;
+		}
+		LinearNode<E> add = new LinearNode<E>(element);
+		add.setNext(current);
+		if (current == front) {
+			front = add;
+		}
+		count++;
 
-    }
+	}
 
 	@Override
 	public E removeFirst() { // Colin
-		if (front == null) { throw new NoSuchElementException(); }
+		if (front == null) {
+			throw new NoSuchElementException();
+		}
 		E retVal = front.getElement();
 		front = front.getNext();
 		modCount++;
 		return retVal;
 	}
 
-	/* - Kelsi
+	/*
+	 * - Kelsi
 	 * Will the return front.getElement(); throw NullPointerException?
 	 * - Colin
 	 * Good catch, was returning the wrong element, only NPE on single element list
@@ -147,36 +152,50 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public void set(int index, E element) {
 		// TODO Tyra
-		if (isEmpty()) { throw new IndexOutOfBoundsException(); }
-        if (index < 0 || index > count) { throw new IndexOutOfBoundsException(); }
-        LinearNode<E> current = front;
-        int i = 0;
-        while (current != null && i < index){
-            current = current.getNext();
-            i++;
-        }
-        if (current == null) { throw new IndexOutOfBoundsException(); }
-        current.setElement(element);
-    }
-
-	@Override
-	public E get(int index) { // Colin
-		if (isEmpty()) { throw new IndexOutOfBoundsException(); }
-		if (index < 0 || index > count) { throw new IndexOutOfBoundsException(); }
+		if (isEmpty()) {
+			throw new IndexOutOfBoundsException();
+		}
+		if (index < 0 || index > count) {
+			throw new IndexOutOfBoundsException();
+		}
 		LinearNode<E> current = front;
 		int i = 0;
-		while (current != null && i < index){
+		while (current != null && i < index) {
 			current = current.getNext();
 			i++;
 		}
-		if (current == null) { throw new IndexOutOfBoundsException(); } // Not sure if this is necessary - Colin
+		if (current == null) {
+			throw new IndexOutOfBoundsException();
+		}
+		current.setElement(element);
+	}
+
+	@Override
+	public E get(int index) { // Colin
+		if (isEmpty()) {
+			throw new IndexOutOfBoundsException();
+		}
+		if (index < 0 || index > count) {
+			throw new IndexOutOfBoundsException();
+		}
+		LinearNode<E> current = front;
+		int i = 0;
+		while (current != null && i < index) {
+			current = current.getNext();
+			i++;
+		}
+		if (current == null) {
+			throw new IndexOutOfBoundsException();
+		} // Not sure if this is necessary - Colin
 		modCount++;
 		return current.getElement();
 	}
 
 	@Override
 	public int indexOf(E element) { // Zion
-		if ( isEmpty() ) { return -1; } 
+		if (isEmpty()) {
+			return -1;
+		}
 
 		LinearNode<E> temp = this.front;
 		int indexCounter = 0;
@@ -201,6 +220,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public E last() {
 		// TODO Kelsi
+		return rear.getElement();
 	}
 
 	@Override
@@ -302,7 +322,9 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 		@Override
 		public void remove() { // Colin
-			if (!didNext) { throw new ConcurrentModificationException(); }
+			if (!didNext) {
+				throw new ConcurrentModificationException();
+			}
 			previous.setNext(next);
 			current = previous; // GC old current
 			didNext = false; // disallow remove until next, next()
