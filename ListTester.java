@@ -207,7 +207,7 @@ public class ListTester {
 		// Scenario: 15 TODO Tyler
 		testEmptyList(A_remove0_empty, "15: A_remove0A_emptyList");
 		// Scenario: 44
-
+		testEmptyList(A_iter_remove_emptyList, "44: A_iter_remove_emptyList");
 		// 1-element to 2-element
 		// Scenario: 06
 		testTwoElementList(A_addToFrontB_BA, "A_addToFrontB_BA", LIST_BA, STRING_BA);
@@ -640,7 +640,13 @@ public class ListTester {
 	 *
 	 * @return [] after iterator, next(), remove()
 	 */
-
+	private IndexedUnsortedList<Integer> A_iter_remove_emptyList() {
+		IndexedUnsortedList<Integer> iterList = emptyList_addA_A();
+		iterList.iterator().next();
+		iterList.iterator().remove();
+		return iterList;
+	}
+	private Scenario<Integer> A_iter_remove_emptyList = () -> A_iter_remove_emptyList(); 
 	/**
 	 * Scenario #45: [A,B] -> iterator, next(), remove() -> [B]
 	 *
