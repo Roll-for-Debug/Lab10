@@ -40,6 +40,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 		LinearNode<E> newNode = new LinearNode<E>(element);
 		if (isEmpty()) { // add isEmpty check as emptyList rear is null and rear.setNext won't work
 			front = rear = newNode;
+			count++;
 		} else {
 			rear.setNext(newNode);
 			rear = rear.getNext();
