@@ -154,6 +154,9 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public E remove(int index) {
 		// TODO Kelsi
+		if (index > count || index < 0) {
+			throw new IndexOutOfBoundsException();
+		}
 		return remove(get(index));
 	}
 
@@ -230,6 +233,9 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 	@Override
 	public E last() {
+		if (isEmpty()) {
+			throw new NoSuchElementException();
+		}
 		// TODO Kelsi
 		return rear.getElement();
 	}
