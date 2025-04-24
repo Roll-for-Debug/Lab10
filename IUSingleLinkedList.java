@@ -147,6 +147,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public E remove(int index) {
 		// TODO Kelsi
+		return remove(get(index));
 	}
 
 	@Override
