@@ -128,7 +128,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 	@Override
 	public E removeLast() { // Zion
-		if (isEmpty) {
+		if (isEmpty()) {
 			throw new NoSuchElementException();
 		}
 		return remove(rear.getElement());
@@ -222,6 +222,9 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public E first() {
 		// Review Tyler
+		if (isEmpty()) { 
+			throw new NoSuchElementException();
+		}
 		return front.getElement();
 	}
 
