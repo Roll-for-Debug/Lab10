@@ -603,6 +603,13 @@ public class ListTester {
 	 *
 	 * @return [A] after remove(1)
 	 */
+	private IndexedUnsortedList<Integer> AB_remove1_A() {
+		IndexedUnsortedList<Integer> list = A_addToRearB_AB();
+		list.remove(1);
+		return list;
+	}
+
+	private Scenario<Integer> AB_remove1_A = () -> AB_remove1_A();
 
 	/**
 	 * // TODO Tyra
