@@ -38,10 +38,14 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	@Override
 	public void addToRear(E element) { // Zion
 		LinearNode<E> newNode = new LinearNode<E>(element);
-		rear.setNext(newNode);
-		rear = rear.getNext();
-		newNode = null;
-		count++;
+		if (isEmpty()) { // add isEmpty check as emptyList rear is null and rear.setNext won't work
+			front = rear = newNode;
+		} else {
+			rear.setNext(newNode);
+			rear = rear.getNext();
+			newNode = null;
+			count++;
+		}
 	}
 
 	@Override
