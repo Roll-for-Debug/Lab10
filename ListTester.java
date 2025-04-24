@@ -590,6 +590,13 @@ public class ListTester {
 	 *
 	 * @return [B] after remove(0)
 	 */
+	private IndexedUnsortedList<Integer> AB_remove0_B() {
+		IndexedUnsortedList<Integer> list = A_addToRearB_AB();
+		list.remove(0);
+		return list;
+	}
+
+	private Scenario<Integer> AB_remove0_B = () -> AB_remove0_B();
 
 	/**
 	 * Scenario #30: [A,B] -> remove(1) -> [A]
