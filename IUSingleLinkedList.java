@@ -227,6 +227,9 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 	@Override
 	public E last() {
+		if (isEmpty()) {
+			throw new NoSuchElementException();
+		}
 		// TODO Kelsi
 		return rear.getElement();
 	}
