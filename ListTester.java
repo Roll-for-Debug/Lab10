@@ -236,9 +236,9 @@ public class ListTester {
 		testSingleElementList(AB_removeB_A, "28: AB_removeB_A", LIST_A, STRING_A); // ADD THIS LINE
 
 		// Scenario: 29
-
+		testSingleElementList(AB_remove0_B, "29: AB_remove0_B", LIST_B, STRING_B);
 		// Scenario: 30
-
+		testSingleElementList(AB_remove1_A, "30: AB_remove1_A", LIST_A, STRING_A);
 		// Scenario: 45
 
 		// Scenario: 46
