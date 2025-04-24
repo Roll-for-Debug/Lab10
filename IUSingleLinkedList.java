@@ -113,10 +113,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 		if (front == null) {
 			throw new NoSuchElementException();
 		}
-		E retVal = front.getElement();
-		front = front.getNext();
-		modCount++;
-		return retVal;
+		return remove(front.getElement());
 	}
 
 	/*
