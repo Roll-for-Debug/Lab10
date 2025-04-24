@@ -176,7 +176,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 	@Override
 	public int indexOf(E element) { // Zion
-		if ( isEmpty() ) { throw new RuntimeException(); } // Need to replace with correct exception, unless it should return -1 "I think it's just -1" - Colin
+		if ( isEmpty() ) { return -1; } 
 
 		LinearNode<E> temp = this.front;
 		int indexCounter = 0;
