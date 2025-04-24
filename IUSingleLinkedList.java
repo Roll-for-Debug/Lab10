@@ -210,7 +210,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 		LinearNode<E> temp = this.front;
 		int indexCounter = 0;
 		do {
-			if (temp.equals(element)) {
+			if (temp.getElement().equals(element)) {
 				return indexCounter;
 			}
 			temp = temp.getNext();
@@ -218,14 +218,14 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 			if (temp == null) {
 				return -1;
 			}
-		} while (!(temp == null) || !temp.getElement().equals(element));
-		return indexCounter;
+		} while (!(temp == null));
+		return -1;
 	}
 
 	@Override
 	public E first() {
 		// Review Tyler
-		if (isEmpty()) { 
+		if (isEmpty()) {
 			throw new NoSuchElementException();
 		}
 		return front.getElement();
