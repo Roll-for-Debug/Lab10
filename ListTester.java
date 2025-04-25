@@ -250,7 +250,7 @@ public class ListTester {
 		// Scenario: 20 TODO Zion
 		testThreeElementList(AB_addAfterCB_ABC, "20: AB_addAfterCB_ABC", LIST_ABC, STRING_ABC);
 		// Scenario: 23
-		testThreeElementList(AB_addC_ACB, "23: AB_addC_ACB", LIST_ACB, STRING_ACB);
+		testThreeElementList(AB_add1C_ACB, "23: AB_add1C_ACB", LIST_ACB, STRING_ACB);
 		// 2-element to changed 2-element via set()
 
 		// 3-element to empty list
@@ -523,13 +523,13 @@ public class ListTester {
 	 *
 	 * @return [A,C,B] after add(1,C)
 	 */
-	private IndexedUnsortedList<Integer> AB_addC_ACB() {
+	private IndexedUnsortedList<Integer> AB_add1C_ACB() {
 		IndexedUnsortedList<Integer> list = A_addToRearB_AB();
 		list.add(1, ELEMENT_C);
 		return list;
 	}
 
-	private Scenario<Integer> AB_addC_ACB = () -> AB_addC_ACB();
+	private Scenario<Integer> AB_add1C_ACB = () -> AB_add1C_ACB();
 
 	/**
 	 * Scenario #25: [A,B] -> removeFirst() -> [B]
