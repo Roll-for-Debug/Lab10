@@ -336,6 +336,10 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 		@Override
 		public void remove() { // Colin
+			  // [Tyler] added guard for empty lists
+			if (isEmpty()) { 
+				throw new IllegalStateException();
+			} //[Tyler]
 			if (!didNext) {
 				throw new ConcurrentModificationException();
 			}
