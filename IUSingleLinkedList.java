@@ -85,6 +85,10 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 		// TODO Tyra
 		LinearNode<E> current = front;
 		LinearNode<E> addMe = new LinearNode<E>(element);
+		if(index == 0) {
+			addToFront(element);
+			return;
+		}
 		if (index < 0 || index > size()) { throw new IndexOutOfBoundsException(); }
 		for (int i = 0; i < index - 1; i++) {
 			current = current.getNext();
