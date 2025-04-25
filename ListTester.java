@@ -274,6 +274,7 @@ public class ListTester {
 		// Scenario: 39 TODO Tyler
 		testTwoElementList(ABC_remove1_AC, "39: ABC_remove1_AC", LIST_AC, STRING_AC);
 		// Scenario: 48
+		testTwoElementList(ABC_removeAfterNextNext_AC, "ABC_removeAfterNextNext_AC", LIST_AC, STRING_AC);
 
 		// Scenario: 49
 
@@ -697,6 +698,15 @@ public class ListTester {
 	 *
 	 * @return [B,C] after iterator, next(), remove()
 	 */
+	private IndexedUnsortedList<Integer> ABC_removeAfterNext_BC() {
+		IndexedUnsortedList<Integer> list = A_addToRearB_AB();
+		list.addToRear(ELEMENT_C);
+		Iterator list_iter = list.iterator();
+		list_iter.next();
+		list_iter.remove();
+		return list;
+	}
+		private Scenario<Integer> ABC_removeAfterNext_BC = () -> ABC_removeAfterNext_BC();
 
 	/**
 	 * Scenario #49: [A,B,C] -> iterator, next(), next(), remove() -> [A,C]
