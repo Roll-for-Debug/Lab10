@@ -318,6 +318,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 		@Override
 		public E next() {
 			// TODO Tyra
+
 			if (iterModCount != modCount) { throw new ConcurrentModificationException(); }
 			if (next == null) { throw new NoSuchElementException(); }
 
@@ -331,12 +332,8 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 		@Override
 		public void remove() { // Colin
-			  // [Tyler] added guard for empty lists
-			if (isEmpty()) {
+			if (isEmpty()|| !didNext) {
 				throw new IllegalStateException();
-			} //[Tyler]
-			if (!didNext) {
-				throw new ConcurrentModificationException();
 			}
 
 			removeElement(previous, current);
