@@ -56,8 +56,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 	}
 
 	@Override
-	public void addAfter(E element, E target) {
-		// TODO Kelsi
+	public void addAfter(E element, E target) { // Kelsi
 		LinearNode<E> current = front;
 		LinearNode<E> newNode = new LinearNode<E>(element);
 
@@ -343,13 +342,8 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 			} else {
 				removeElement(previous, current);
 			}
-			// if (hasNext()) {
-			// 	previous.setNext(next);
-			// }
-			// current = previous;
 			didNext = false; // disallow remove until next, next()
 			iterModCount++;
-			// count--;
 		}
 	}
 
