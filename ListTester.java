@@ -814,6 +814,7 @@ public class ListTester {
 		iter.remove();
 		iter.next();
 		iter.remove();
+		// System.out.println("___TOSTRING___" + iterList.toString());
 		return iterList;
 	}
 	private Scenario<Integer> ABC_nextRemoveNextRemoveNextRemove_emptyList = () -> ABC_nextRemoveNextRemoveNextRemove_emptyList();

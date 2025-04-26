@@ -283,7 +283,7 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 		}
 		count--;
 		modCount++;
-
+		// System.out.println(result);
 		return result;
 	}
 
@@ -323,23 +323,33 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 
 			previous = current;
 			current = next;
-			if (hasNext()){
-				next = current.getNext();
+			if (current.getNext() != null){
+				next = next.getNext();
 			} else {
 				next = null;
 			}
 			didNext = true; // Allow remove
+			// System.out.println("__CURRENT__:" + current.getElement());
 			return current.getElement();
 		}
 
 		@Override
 		public void remove() { // Colin
-			if (!didNext) {
-				throw new IllegalStateException();
+			if (!didNext) { throw new IllegalStateException(); }
+			if (current == front) {
+				removeFirst();
+			} else if (current == rear) {
+				removeLast();
+			} else {
+				removeElement(previous, current);
 			}
-			removeElement(previous, current);
+			// if (hasNext()) {
+			// 	previous.setNext(next);
+			// }
+			// current = previous;
 			didNext = false; // disallow remove until next, next()
 			iterModCount++;
+			// count--;
 		}
 	}
 
