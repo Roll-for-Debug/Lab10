@@ -318,39 +318,30 @@ public class IUSingleLinkedList<E> implements IndexedUnsortedList<E> {
 		@Override
 		public E next() {
 			// TODO Tyra
-
 			if (iterModCount != modCount) { throw new ConcurrentModificationException(); }
 			if (next == null) { throw new NoSuchElementException(); }
 
 			previous = current;
 			current = next;
-			next = current.getNext();
+			if (hasNext()){
+				next = current.getNext();
+			} else {
+				next = null;
+			}
 			didNext = true; // Allow remove
-
-			return previous.getElement();
+			return current.getElement();
 		}
 
 		@Override
 		public void remove() { // Colin
-			if (isEmpty()|| !didNext) {
+			if (!didNext) {
 				throw new IllegalStateException();
 			}
-
 			removeElement(previous, current);
-
 			didNext = false; // disallow remove until next, next()
 			iterModCount++;
 		}
-
-		// private string iterToString() {
-		// 	String re = "";
-		// 	while (hasNext()) {
-		// 		re += next();
-		// 	}
-		// }
 	}
-
-
 
 	// IGNORE THE FOLLOWING CODE
 	// DON'T DELETE ME, HOWEVER!!!
