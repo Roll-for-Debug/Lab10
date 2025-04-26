@@ -240,7 +240,7 @@ public class ListTester {
 		// Scenario: 30
 		testSingleElementList(AB_remove1_A, "30: AB_remove1_A", LIST_A, STRING_A);
 		// Scenario: 45
-
+		testSingleElementList(AB_iter_nextRemove_B, "45: AB_iter_nextRemove_B", LIST_B, STRING_B);
 		// Scenario: 46
 		testSingleElementList(AB_iterNextNextRemove_B, "46: AB_iterNextNextRemove_B", LIST_B, STRING_B);
 		// 2-element to 3-element
@@ -276,12 +276,10 @@ public class ListTester {
 		testTwoElementList(ABC_remove1_AC, "39: ABC_remove1_AC", LIST_AC, STRING_AC);
 		// Scenario: 48
 		testTwoElementList(ABC_removeAfterNext_BC, "ABC_removeAfterNext_BC", LIST_AC, STRING_AC);
-
 		// Scenario: 49
-		testTwoElementList(ABC_iterNextNextRemove_AC, "ABC_iterNextNextRemove_AC", LIST_AC, STRING_AC);
-
+		testTwoElementList(ABC_iterNextNextRemove_AC, "ABC_iter_nextNextNextRemove_AB", LIST_AB, STRING_AB);
 		// Scenario: 50
-
+		testTwoElementList(ABC_iter_nextNextNextRemove_AB, STRING_ADC, LIST_ABD, STRING_ABD);
 		// 3-element to changed 3-element via set()
 
 		// List Iterator Scenarios
@@ -673,6 +671,14 @@ public class ListTester {
 	 *
 	 * @return [B] after iterator, next(), remove()
 	 */
+	private IndexedUnsortedList<Integer> AB_iter_nextRemove_B() {
+		IndexedUnsortedList<Integer> iterList = A_addToRearB_AB();
+		iterList.iterator().next();
+		iterList.iterator().remove();
+		return iterList;
+	}
+
+	private Scenario<Integer> AB_iter_nextRemove_B = () -> AB_iter_nextRemove_B();
 
 	/**
 	 * Scenario #46: [A,B] -> iterator, next(), next(), remove() -> [A]
@@ -728,6 +734,16 @@ public class ListTester {
 	 *
 	 * @return [A,B] after iterator, next(), next(), next(), remove()
 	 */
+	private IndexedUnsortedList<Integer> ABC_iter_nextNextNextRemove_AB() {
+		IndexedUnsortedList<Integer> iterList = A_addToRearB_AB();
+		iterList.iterator().next();
+		iterList.iterator().next();
+		iterList.iterator().next();
+		iterList.iterator().remove();
+		return iterList;
+	}
+
+	private Scenario<Integer> ABC_iter_nextNextNextRemove_AB = () -> ABC_iter_nextNextNextRemove_AB();
 
 	/**
 	 * Scenario #51: [A,B,C] -> iterator, next(), remove(), next(), remove() -> [C]
